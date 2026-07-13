@@ -1,3 +1,4 @@
+.github/**
 .vscode/**
 .vscode-test/**
 out/**
@@ -13,7 +14,7 @@ src/**
 **/.vscode-test.*
 scripts/**
 releases/**
-tests/**
+**/tests/**
 docs/**
 assets/**
 .claude/
