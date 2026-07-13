@@ -12,6 +12,7 @@ import {
   getGitChangesGutterEnabled,
   getGitDiffLineHighlightsEnabled,
   getSpellCheckEnabled,
+  getVSCodePreviewFontFamily,
   getOutlinePosition,
   getOutlineVisible,
   getRememberPositionLines,
@@ -65,6 +66,7 @@ type InitMessage = {
   vimKeybindings: VimKeybinding[];
   vimLeader: string;
   findOptions: FindOptions;
+  vscodePreviewFontFamily?: string;
   outlinePosition: OutlinePosition;
   outlineVisible: boolean;
   theme: ThemeSettings;
@@ -394,6 +396,7 @@ export function createPanelSessionController(params: PanelSessionControllerParam
       vimKeybindings: getVimKeybindings(),
       vimLeader: getVimLeaderKey(),
       findOptions: getFindOptions(),
+      vscodePreviewFontFamily: getVSCodePreviewFontFamily(),
       outlinePosition: getOutlinePosition(),
       outlineVisible: getOutlineVisible(context),
       theme: getThemeSettings(),
