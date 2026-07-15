@@ -894,7 +894,7 @@ export function createPanelSessionController(params: PanelSessionControllerParam
         });
         return;
       case 'exportSnapshotError':
-        rejectPendingExportSnapshot(raw.requestId, new Error(raw.message || 'Failed to collect export snapshot.'));
+        rejectPendingExportSnapshot(raw.requestId, new Error(raw.error || 'Failed to collect export snapshot.'));
         return;
       case 'requestGitBlame': {
         const resolved = await resolveGitBlameForRequest(documentUri, raw, document.getText(), gitDocumentState);
