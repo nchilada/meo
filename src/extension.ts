@@ -50,6 +50,7 @@ import {
   getGitChangesGutterEnabled,
   getGitDiffLineHighlightsEnabled,
   getLineNumbersEnabled,
+  getVSCodePreviewFontFamily,
   getOutlinePosition,
   getOutlineVisible,
   getContentMaxWidthEnabled,
@@ -583,9 +584,10 @@ class MarkdownWebviewProvider implements vscode.CustomTextEditorProvider {
     }
 
     if (
-      event.affectsConfiguration(`${EXTENSION_CONFIG_SECTION}.theme`)
+      event.affectsConfiguration(`${EXTENSION_CONFIG_SECTION}.theme`) ||
+      event.affectsConfiguration('markdown.preview.fontFamily')
     ) {
-      this.broadcast({ type: 'themeChanged', theme: getThemeSettings(), codeTheme: getCodeBlockVscodeTheme() });
+      this.notifyThemeChanged();
     }
 
     if (
@@ -610,7 +612,12 @@ class MarkdownWebviewProvider implements vscode.CustomTextEditorProvider {
   }
 
   notifyThemeChanged(): void {
-    this.broadcast({ type: 'themeChanged', theme: getThemeSettings(), codeTheme: getCodeBlockVscodeTheme() });
+    this.broadcast({
+      type: 'themeChanged',
+      theme: getThemeSettings(),
+      vscodePreviewFontFamily: getVSCodePreviewFontFamily(),
+      codeTheme: getCodeBlockVscodeTheme()
+    });
   }
 
   async toggleActiveEditorMode(): Promise<void> {

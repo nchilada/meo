@@ -30,6 +30,7 @@ export type ExtensionMessage =
     theme: ThemeSettings;
     shikiCodeBlocks: boolean;
     codeTheme: RawVscodeTheme | null;
+    vscodePreviewFontFamily?: string;
     mode: 'live' | 'source';
     outlinePosition: 'left' | 'right';
     outlineVisible: boolean;
@@ -50,7 +51,7 @@ export type ExtensionMessage =
   | { type: 'focusEditor' }
   | { type: 'revealSelection'; anchor: number; head: number; focus?: boolean }
   | { type: 'diagnosticsChanged'; diagnostics: EditorDiagnostic[] }
-  | { type: 'themeChanged'; theme: ThemeSettings; codeTheme: RawVscodeTheme | null }
+  | { type: 'themeChanged'; theme: ThemeSettings; codeTheme: RawVscodeTheme | null; vscodePreviewFontFamily?: string }
   | { type: 'shikiCodeBlocksChanged'; enabled: boolean; codeTheme: RawVscodeTheme | null }
   | { type: 'toggleMode' }
   | { type: 'outlinePositionChanged'; position: 'left' | 'right' }
